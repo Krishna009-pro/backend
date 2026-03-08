@@ -1,0 +1,136 @@
+<%- include('../partials/head') %>
+
+    <body class="bg-neutral-50 text-gray-900 font-sans">
+
+        <!-- Header -->
+        <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-4">
+            <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+                <%- include("../partials/nav") %>
+            </div>
+        </header>
+
+        <main class="min-h-screen flex items-center justify-center px-4">
+            <div class="w-full max-w-md bg-white rounded-2xl border border-gray-200 shadow-xl">
+
+                <!-- Header -->
+                <div class="px-6 py-5 border-b border-gray-200 text-center">
+                    <h1 class="text-xl font-semibold">Create your account</h1>
+                    <p class="text-sm text-gray-500 mt-1">Join Airbnb today</p>
+                </div>
+
+                <!-- Form -->
+                <form action="/auth/register" method="POST" class="p-6 space-y-5">
+
+                    <%- include('../partials/authError') %>
+                        <!-- First Name -->
+                        <div class="relative">
+                            <input type="text" name="firstName" required placeholder=" "
+                                value="<%= oldInput.firstName ? oldInput.firstName : '' %>"
+                                class="peer w-full rounded-xl border border-gray-300 px-4 pt-5 pb-2 text-sm focus:border-black focus:ring-2 focus:ring-black/20 outline-none">
+                            <label class="absolute left-4 top-4 text-gray-500 text-sm transition-all
+                                    peer-placeholder-shown:top-4
+                                    peer-placeholder-shown:text-sm
+                                    peer-focus:top-2
+                                    peer-focus:text-xs
+                                    peer-focus:text-black
+                                    peer-not-placeholder-shown:top-2
+                                    peer-not-placeholder-shown:text-xs">
+                                First name
+                            </label>
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="relative">
+                            <input type="text" name="lastName" required placeholder=" "
+                                value="<%= oldInput.lastName ? oldInput.lastName : '' %>"
+                                class="peer w-full rounded-xl border border-gray-300 px-4 pt-5 pb-2 text-sm focus:border-black focus:ring-2 focus:ring-black/20 outline-none">
+                            <label class="absolute left-4 top-4 text-gray-500 text-sm transition-all
+                      peer-focus:top-2 peer-focus:text-xs peer-focus:text-black
+                      peer-not-placeholder-shown:top-2 peer-not-placeholder-shown:text-xs">
+                                Last name
+                            </label>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="relative">
+                            <input type="email" name="email" required placeholder=" "
+                                value="<%= oldInput.email ? oldInput.email : '' %>"
+                                class="peer w-full rounded-xl border border-gray-300 px-4 pt-5 pb-2 text-sm focus:border-black focus:ring-2 focus:ring-black/20 outline-none">
+                            <label class="absolute left-4 top-4 text-gray-500 text-sm transition-all
+                      peer-focus:top-2 peer-focus:text-xs peer-focus:text-black
+                      peer-not-placeholder-shown:top-2 peer-not-placeholder-shown:text-xs">
+                                Email address
+                            </label>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="relative">
+                            <input type="password" name="password" required placeholder=" "
+                                class="peer w-full rounded-xl border border-gray-300 px-4 pt-5 pb-2 text-sm focus:border-black focus:ring-2 focus:ring-black/20 outline-none">
+                            <label class="absolute left-4 top-4 text-gray-500 text-sm transition-all
+                      peer-focus:top-2 peer-focus:text-xs peer-focus:text-black
+                      peer-not-placeholder-shown:top-2 peer-not-placeholder-shown:text-xs">
+                                Password
+                            </label>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="relative">
+                            <input type="password" name="confirmPassword" required placeholder=" "
+                                class="peer w-full rounded-xl border border-gray-300 px-4 pt-5 pb-2 text-sm focus:border-black focus:ring-2 focus:ring-black/20 outline-none">
+                            <label class="absolute left-4 top-4 text-gray-500 text-sm transition-all
+                      peer-focus:top-2 peer-focus:text-xs peer-focus:text-black
+                      peer-not-placeholder-shown:top-2 peer-not-placeholder-shown:text-xs">
+                                Confirm password
+                            </label>
+                        </div>
+
+                        <!-- User Type -->
+                        <div class="space-y-2">
+                            <p class="text-sm font-medium">I want to register as</p>
+                            <div class="flex gap-6 text-sm">
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="userType" value="user" <%=oldInput?.userType==='user'
+                                        ? 'checked' : '' %>
+                                    class="accent-rose-500">
+                                    User
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="userType" value="admin" <%=oldInput?.userType==='admin'
+                                        ? 'checked' : '' %>
+                                    class="accent-rose-500">
+                                    Admin
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Terms -->
+                        <label class="flex items-start gap-2 text-xs text-gray-600">
+                            <input type="checkbox" name="terms" required class="accent-rose-500 mt-1">
+                            I agree to the Terms and Privacy Policy
+                        </label>
+
+                        <!-- Submit -->
+                        <button type="submit" class="w-full rounded-xl bg-rose-500 py-3 text-white font-semibold
+               hover:bg-rose-600 active:scale-[0.98]
+               focus:ring-2 focus:ring-rose-500 focus:ring-offset-2 transition">
+                            Create account
+                        </button>
+
+                </form>
+
+                <!-- Footer -->
+                <div class="px-6 pb-6 text-center text-sm text-gray-600">
+                    Already have an account?
+                    <a href="/auth/login" class="font-semibold underline hover:text-rose-500">
+                        Log in
+                    </a>
+                </div>
+
+            </div>
+        </main>
+
+    </body>
+
+    </html>

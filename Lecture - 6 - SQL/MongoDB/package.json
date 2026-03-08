@@ -1,0 +1,20 @@
+{
+  "name": "dynamic-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "krishna patil",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "mongodb": "^7.0.0",
+    "nodemon": "^3.1.11",
+    "tailwindcss": "^4.1.18"
+  }
+}

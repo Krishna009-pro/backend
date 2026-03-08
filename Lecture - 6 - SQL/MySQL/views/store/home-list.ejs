@@ -1,0 +1,138 @@
+<%- include('../partials/head') %>
+
+    <body class="bg-white text-gray-900">
+
+        <!-- Header -->
+        <header
+            class="sticky top-0 z-50 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between shadow-sm">
+            <div class="flex items-center gap-8">
+                <a href="/" class="flex items-center gap-2">
+                    <svg class="w-8 h-8 text-rose-500" viewBox="0 0 32 32" fill="currentColor">
+                        <path
+                            d="M16 1c2.008 0 3.463.963 4.751 3.269l.533 1.025c1.954 3.83 6.114 12.54 7.1 14.836l.145.346c1.264 3.033.864 5.922-1.121 8.125-1.921 2.132-4.634 3.321-7.558 3.404L19.4 32l-.35-.001h-.1c-3.134 0-5.967-1.354-7.85-3.649-1.884 2.295-4.717 3.649-7.85 3.649h-.1l-.35-.001C2.851 31.916.138 30.727-1.783 28.595c-1.985-2.203-2.385-5.092-1.121-8.125l.145-.346c.986-2.296 5.146-11.006 7.1-14.836l.533-1.025C6.537 1.963 7.992 1 10 1c2.008 0 3.463.963 4.751 3.269L16 6.538l1.249-2.269C18.537 1.963 19.992 1 22 1zm0 2c-1.282 0-2.19.643-3.142 2.345L11.59 18.27l-.145.346c-1.085 2.604-.844 4.814.646 6.468C13.298 26.46 15.111 27.228 17.152 27.32l.248.003h.1c2.613 0 4.858-1.214 6.167-3.235l.133-.21c.882-1.464 1.147-3.087.726-4.904l-.071-.248c-.066-.217-.184-.55-.353-.984l-.173-.42c-.933-2.19-4.809-10.435-6.732-14.21l-.533-1.025C18.19 2.643 17.282 2 16 2zm-6 0c-1.282 0-2.19.643-3.142 2.345L5.59 18.27l-.145.346c-1.085 2.604-.844 4.814.646 6.468C7.298 26.46 9.111 27.228 11.152 27.32l.248.003h.1c2.613 0 4.858-1.214 6.167-3.235l.133-.21c.882-1.464 1.147-3.087.726-4.904l-.071-.248c-.066-.217-.184-.55-.353-.984l-.173-.42c-.933-2.19-4.809-10.435-6.732-14.21l-.533-1.025C10.19 2.643 9.282 2 8 2z" />
+                    </svg>
+                    <span class="text-rose-500 font-bold text-xl tracking-tight">airbnb</span>
+                </a>
+                <%- include("../partials/nav") %>
+                    <div class="hidden bosrder-rose-500"></div>
+            </div>a
+
+            <div class="flex items-center gap-4">
+                <a href="/admin/add-home"
+                    class="hidden sm:block text-sm font-semibold py-2 px-4 hover:bg-gray-100 rounded-full transition-colors cursor-pointer">
+                    Airbnb your home
+                </a>
+                <button class="p-2 border border-gray-300 rounded-full hover:shadow-md transition-shadow">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9s2.015-9 4.5-9m0 18c-2.485 0-4.5-4.03-4.5-9s2.015-9 4.5-9" />
+                    </svg>
+                </button>
+                <button
+                    class="flex items-center gap-2 p-1 pl-3 border border-gray-300 rounded-full hover:shadow-md transition-shadow">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <div class="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </button>
+            </div>
+        </header>
+
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex items-center justify-between mb-8">
+                <h1 class="text-2xl font-bold tracking-tight">Available Homes</h1>
+                <div class="flex items-center gap-2 text-sm text-gray-500">
+                    <span>Display total before taxes</span>
+                    <button class="w-10 h-6 bg-gray-200 rounded-full p-1 transition-colors hover:bg-gray-300">
+                        <div class="w-4 h-4 bg-white rounded-full"></div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-10">
+                <% registeredHomes.forEach(function (home) { %>
+                    <div class="group cursor-pointer">
+                        <div class="aspect-square w-full overflow-hidden rounded-xl bg-gray-200 relative">
+                            <img src="<%= home.imageUrl || 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800' %>"
+                                alt="<%= home.homename %>"
+                                class="h-full w-full object-cover transition duration-300 group-hover:scale-105">
+                            <button class="absolute top-3 right-3 text-white/90 hover:text-rose-500 transition-colors">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" stroke="white"
+                                    stroke-width="2">
+                                    <path
+                                        d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="mt-3 flex justify-between">
+                            <div>
+                                <h3 class="font-semibold text-[15px]">
+                                    <%= home.homename %>, <%= home.location %>
+                                </h3>
+                                <p class="text-sm text-gray-500 line-clamp-1">Stay with Host Name</p>
+                                <p class="mt-1 text-sm"><span class="font-semibold">₹<%= home.price %></span> <span
+                                        class="text-gray-500">night</span></p>
+                            </div>
+                            <div class="flex items-center gap-1 text-sm">
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 32 32">
+                                    <path
+                                        d="M16 2.5l4.3 8.7 9.6 1.4-6.9 6.8 1.6 9.6-8.6-4.5-8.6 4.5 1.6-9.6-6.9-6.8 9.6-1.4z" />
+                                </svg>
+                                <span>
+                                    <%= home.rating || '4.85' %>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- From Uiverse.io by Creatlydev -->
+                        <%- include('partials/DetailsBtn', { id: home.Id }) %>
+
+                            <%- include('partials/favBtn', { id: home.Id }) %>
+
+
+                    </div>
+                    <% }) %>
+            </div>
+        </main>
+
+        <footer class="mt-20 border-t border-gray-200 bg-gray-50 py-12 px-6">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <h4 class="font-semibold">Support</h4>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li class="hover:underline cursor-pointer">Help Centre</li>
+                        <li class="hover:underline cursor-pointer">AirCover</li>
+                        <li class="hover:underline cursor-pointer">Anti-discrimination</li>
+                    </ul>
+                </div>
+                <!-- More footer columns could go here -->
+            </div>
+            <div
+                class="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center text-sm font-medium text-gray-600">
+                <div class="flex gap-4">
+                    <span>© 2024 Airbnb, Inc.</span>
+                    <span class="hover:underline cursor-pointer">Privacy</span>
+                    <span class="hover:underline cursor-pointer">Terms</span>
+                    <span class="hover:underline cursor-pointer">Sitemap</span>
+                </div>
+                <div class="flex items-center gap-6 mt-4 md:mt-0">
+                    <div class="flex items-center gap-2 hover:underline cursor-pointer">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>English (IN)</span>
+                    </div>
+                    <div class="hover:underline cursor-pointer font-bold">₹ INR</div>
+                </div>
+            </div>
+        </footer>
+
+    </body>
+
+    </html>

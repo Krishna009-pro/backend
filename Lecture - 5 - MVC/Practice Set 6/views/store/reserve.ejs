@@ -1,0 +1,57 @@
+<%- include('../partials/head') %>
+
+    <body class="bg-white text-gray-900">
+
+        <!-- Header -->
+        <header
+            class="sticky top-0 z-50 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between shadow-sm">
+            <div class="flex items-center gap-8">
+                <a href="/" class="flex items-center gap-2">
+                    <svg class="w-8 h-8 text-rose-500" viewBox="0 0 32 32" fill="currentColor">
+                        <path
+                            d="M16 1c2.008 0 3.463.963 4.751 3.269l.533 1.025c1.954 3.83 6.114 12.54 7.1 14.836l.145.346c1.264 3.033.864 5.922-1.121 8.125-1.921 2.132-4.634 3.321-7.558 3.404L19.4 32l-.35-.001h-.1c-3.134 0-5.967-1.354-7.85-3.649-1.884 2.295-4.717 3.649-7.85 3.649h-.1l-.35-.001C2.851 31.916.138 30.727-1.783 28.595c-1.985-2.203-2.385-5.092-1.121-8.125l.145-.346c.986-2.296 5.146-11.006 7.1-14.836l.533-1.025C6.537 1.963 7.992 1 10 1c2.008 0 3.463.963 4.751 3.269L16 6.538l1.249-2.269C18.537 1.963 19.992 1 22 1zm0 2c-1.282 0-2.19.643-3.142 2.345L11.59 18.27l-.145.346c-1.085 2.604-.844 4.814.646 6.468C13.298 26.46 15.111 27.228 17.152 27.32l.248.003h.1c2.613 0 4.858-1.214 6.167-3.235l.133-.21c.882-1.464 1.147-3.087.726-4.904l-.071-.248c-.066-.217-.184-.55-.353-.984l-.173-.42c-.933-2.19-4.809-10.435-6.732-14.21l-.533-1.025C10.19 2.643 9.282 2 8 2z" />
+                    </svg>
+                    <span class="text-rose-500 font-bold text-xl tracking-tight">airbnb</span>
+                </a>
+                <%- include('../partials/nav') %>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="grow flex flex-col md:flex-row items-center justify-center p-8 max-w-7xl mx-auto w-full gap-12">
+            <div class="max-w-md text-center md:text-left">
+                <h1 class="text-6xl md:text-8xl font-black text-gray-200 mb-4 tracking-tighter">Booking page</h1>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">We can't seem to find the page you're
+                    looking
+                    for.</h2>
+                <p class="text-lg text-gray-600 mb-10">
+                    Error code: 404 <br>
+                    Here are some helpful links instead:
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="/"
+                        class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-lg transition-colors shadow-md">
+                        Home
+                    </a>
+                    <a href="#"
+                        class="border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold py-3 px-8 rounded-lg transition-colors">
+                        Help Centre
+                    </a>
+                </div>
+            </div>
+
+            <div class="w-full max-w-sm">
+                <img src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&q=80&w=800"
+                    alt="404 Illustration"
+                    class="rounded-2xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-auto border-t border-gray-200 py-6 px-6 text-center text-sm text-gray-500">
+            © 2024 Airbnb, Inc. All rights reserved.
+        </footer>
+
+    </body>
+
+    </html>

@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #8b5cf6;
+  --primary-hover: #7c3aed;
+  --bg-gradient: radial-gradient(circle at top left, #060b19, #0f172a, #1e1b4b);
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --text-main: #f8fafc;
+  --text-muted: #64748b;
+  --success: #10b981;
+  --danger: #ef4444;
+  --card-shadow: 0 0 80px -20px rgba(139, 92, 246, 0.15);
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  overflow-x: hidden;
+  perspective: 1000px;
+}
+
+#root {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Advanced Spotlight Refraction Effect */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  box-shadow: var(--card-shadow);
+  padding: 3rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.1s ease-out;
+}
+
+.glass-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
+      rgba(139, 92, 246, 0.08),
+      transparent 40%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(200px circle at var(--mouse-x) var(--mouse-y),
+      rgba(255, 255, 255, 0.05),
+      transparent 80%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Holographic Shimmer Effect for tasks */
+@keyframes holographic {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hologram-text {
+  background: linear-gradient(90deg,
+      #f8fafc,
+      #8b5cf6,
+      #38bdf8,
+      #f8fafc);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: holographic 8s ease infinite;
+}
+
+/* Custom Morphing Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, transparent, var(--primary), transparent);
+  border-radius: 10px;
+}

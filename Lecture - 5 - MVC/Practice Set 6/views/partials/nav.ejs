@@ -1,0 +1,38 @@
+<nav class="hidden md:flex items-center gap-6 font-semibold text-gray-700">
+    <!-- adding active page with currentPage -->
+    <a href="/home-list" class="hover:text-rose-500 transition-colors py-2
+                    <%= currentPage === 'home-list'
+                        ? 'border-b-2 border-rose-500'
+                        : 'border-b-2 border-transparent hover:border-rose-500' %>">
+        Home
+    </a>
+
+    <a href="/favorites-list" class="hover:text-rose-500 transition-colors py-2
+                    <%= currentPage === 'favorites-list'
+                        ? 'border-b-2 border-rose-500'
+                        : 'border-b-2 border-transparent hover:border-rose-500' %>">
+        Favorites List
+    </a>
+
+    <a href="/bookings" class="hover:text-rose-500 transition-colors py-2
+                    <%= currentPage === 'bookings'
+                        ? 'border-b-2 border-rose-500'
+                        : 'border-b-2 border-transparent hover:border-rose-500' %>">
+        Bookings
+    </a>
+
+    <a href="/admin/admin-home-list" class="hover:text-rose-500 transition-colors py-2
+                    <%= currentPage === 'admin-home-list'
+                        ? 'border-b-2 border-rose-500'
+                        : 'border-b-2 border-transparent hover:border-rose-500' %>">
+        Admin Home List
+    </a>
+
+    <a href="/admin/add-home" class="hover:text-rose-500 transition-colors py-2
+                    <%= currentPage === 'add-home'
+                        ? 'border-b-2 border-rose-500'
+                        : 'border-b-2 border-transparent hover:border-rose-500' %>">
+        Add Home
+    </a>
+
+</nav>

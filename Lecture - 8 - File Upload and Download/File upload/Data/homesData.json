@@ -1,0 +1,18 @@
+[
+    {
+        "homename": "house 1",
+        "price": "10000",
+        "Location": "Bhadgaon",
+        "Rating": "5",
+        "photo": "../images/img2.jpeg",
+        "id": "5c774fcb-408d-436c-b978-b102252efbb6"
+    },
+    {
+        "homename": "house 4",
+        "price": "20000",
+        "Location": "Nashik",
+        "Rating": "4",
+        "photo": "../images/img5.jpeg",
+        "id": "0b01ef61-535e-4c73-97d1-08acb5485e6a"
+    }
+]

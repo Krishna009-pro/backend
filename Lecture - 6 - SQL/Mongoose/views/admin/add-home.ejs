@@ -1,0 +1,118 @@
+<%- include('../partials/head') %>
+
+    <body class="bg-gray-50 flex flex-col min-h-screen">
+
+        <!-- Header -->
+        <header
+            class="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between shadow-sm sticky top-0 z-50">
+            <div class="flex items-center gap-8">
+                <a href="/" class="flex items-center gap-2">
+                    <svg class="w-8 h-8 text-rose-500" viewBox="0 0 32 32" fill="currentColor">
+                        <path
+                            d="M16 1c2.008 0 3.463.963 4.751 3.269l.533 1.025c1.954 3.83 6.114 12.54 7.1 14.836l.145.346c1.264 3.033.864 5.922-1.121 8.125-1.921 2.132-4.634 3.321-7.558 3.404L19.4 32l-.35-.001h-.1c-3.134 0-5.967-1.354-7.85-3.649-1.884 2.295-4.717 3.649-7.85 3.649h-.1l-.35-.001C2.851 31.916.138 30.727-1.783 28.595c-1.985-2.203-2.385-5.092-1.121-8.125l.145-.346c.986-2.296 5.146-11.006 7.1-14.836l.533-1.025C6.537 1.963 7.992 1 10 1c2.008 0 3.463.963 4.751 3.269L16 6.538l1.249-2.269C18.537 1.963 19.992 1 22 1zm0 2c-1.282 0-2.19.643-3.142 2.345L11.59 18.27l-.145.346c-1.085 2.604-.844 4.814.646 6.468C13.298 26.46 15.111 27.228 17.152 27.32l.248.003h.1c2.613 0 4.858-1.214 6.167-3.235l.133-.21c.882-1.464 1.147-3.087.726-4.904l-.071-.248c-.066-.217-.184-.55-.353-.984l-.173-.42c-.933-2.19-4.809-10.435-6.732-14.21l-.533-1.025C18.19 2.643 17.282 2 16 2zm-6 0c-1.282 0-2.19.643-3.142 2.345L5.59 18.27l-.145.346c-1.085 2.604-.844 4.814.646 6.468C7.298 26.46 9.111 27.228 11.152 27.32l.248.003h.1c2.613 0 4.858-1.214 6.167-3.235l.133-.21c.882-1.464 1.147-3.087.726-4.904l-.071-.248c-.066-.217-.184-.55-.353-.984l-.173-.42c-.933-2.19-4.809-10.435-6.732-14.21l-.533-1.025C10.19 2.643 9.282 2 8 2z" />
+                    </svg>
+                    <span class="text-rose-500 font-bold text-xl tracking-tight">airbnb</span>
+                </a>
+                <%- include("../partials/nav") %>
+            </div>
+            <div class="flex items-center gap-4">
+                <button
+                    class="text-sm font-semibold py-2 px-4 hover:bg-gray-100 rounded-full transition-colors">Questions?</button>
+                <button
+                    class="border border-black text-sm font-semibold py-2 px-4 rounded-lg hover:bg-gray-100 transition-colors">Save
+                    & exit</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="grow flex items-center justify-center p-6">
+            <div class="max-w-xl w-full bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-gray-100">
+                <div class="mb-10 text-center">
+                    <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight mb-2">
+                        <% if (editing) { %>Edit Your Hosted <% } else { %>Host Your<% } %> Home
+                    </h1>
+                    <p class="text-gray-500">Fill in the details below to list your amazing place on Airbnb.</p>
+                </div>
+
+                <form action="/admin/<%= editing ? 'edit-home' : 'add-home'%>" method="POST" class="space-y-6">
+                    <input type="hidden" name="_id" value="<%= editing ? home._id : '' %>">
+                    <!-- Home Name -->
+                    <div>
+                        <label for="homename" class="block text-sm font-semibold text-gray-700 mb-2">Home
+                            Name</label>
+                        <input type="text" id="homename" name="homename" value="<%= editing ? home.homename : ''%>"
+                            placeholder="e.g. Modern Cliffside Villa" class="w-full px-4 py-3 border border-gray-300
+                        rounded-lg focus:ring-2 focus:ring-rose-500
+                        focus:border-rose-500 outline-none transition-all placeholder:text-gray-400" required>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Price -->
+                        <div>
+                            <label for="price" class="block text-sm font-semibold text-gray-700 mb-2">Price per
+                                night
+                                (₹)</label>
+                            <input type="number" id="price" name="price" required placeholder="5000"
+                                value="<%= editing ? home.price : ''%>"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all placeholder:text-gray-400">
+                        </div>
+                    </div>
+                    <!-- Location & Rating -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="location"
+                                class="block text-sm font-semibold text-gray-700 mb-2">Location</label>
+                            <input type="text" id="location" name="location" required
+                                value="<%= editing ? home.location : ''%>" placeholder="e.g. Mumbai, Maharashtra"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all placeholder:text-gray-400">
+                        </div>
+                        <div>
+                            <label for="rating" class="block text-sm font-semibold text-gray-700 mb-2">Rating
+                                (1-5)</label>
+                            <input type="number" id="rating" name="rating" required step="0.01" min="0" max="5"
+                                placeholder="e.g. 4.85" value="<%= editing ? home.rating : ''%>"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all placeholder:text-gray-400">
+                        </div>
+                    </div>
+
+                    <!-- Image URL -->
+                    <div>
+                        <label for="image" class="block text-sm font-semibold text-gray-700 mb-2">Image URL</label>
+                        <input type="url" id="image" name="imageUrl" required value="<%= editing ? home.imageUrl : ''%>"
+                            placeholder="https://images.unsplash.com/..."
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all placeholder:text-gray-400">
+                        <p class="mt-2 text-xs text-gray-400 italic">Please provide a high-quality image link for
+                            better
+                            visibility.</p>
+                    </div>
+
+                    <!-- Description -->
+                    <div>
+                        <label for="description"
+                            class="block text-sm font-semibold text-gray-700 mb-2">Description</label>
+                        <textarea id="description" name="description" rows="4"
+                            placeholder="Describe your home, its features, and what makes it unique."
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-rose-500 focus:border-rose-500 outline-none transition-all placeholder:text-gray-400"
+                            required><%= editing ? home.description : '' %></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full bg-rose-500 hover:bg-rose-600 text-white font-bold py-4 rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all text-lg tracking-wide mt-4">
+                        <%= editing ? "Edit" : "Add" ; %> Your Home
+                    </button>
+                </form>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-gray-200 px-6 py-4 flex items-center justify-between mt-10">
+            <div class="w-full bg-gray-200 rounded-full h-1.5 max-w-xs overflow-hidden">
+                <div class="bg-black h-full w-3/4"></div>
+            </div>
+            <a href="/" class="text-sm font-semibold underline hover:text-rose-500">Back to Home</a>
+        </footer>
+
+    </body>
+
+    </html>
